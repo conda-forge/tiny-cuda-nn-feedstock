@@ -48,6 +48,7 @@ requirements:
     - cuda-nvcc
     - cuda-toolkit
   run:
+    - cuda-cudart
     - python
     - pytorch
 
