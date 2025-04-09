@@ -53,9 +53,8 @@ requirements:
     - pytorch
 
 test:
-  # Disabled because it raises an exception when torch.cuda.is_available() returns false.
-  # imports:
-  #   - tinycudann
+  imports:
+    - tinycudann
   commands:
     - pip check
   requires:
