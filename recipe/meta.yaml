@@ -1,5 +1,5 @@
 {% set name = "tiny-cuda-nn" %}
-{% set version = "1.6.99" %}  # new version (1.7) has not been released yet
+{% set version = "1.7.0.dev0" %}
 
 package:
   name: {{ name|lower }}
@@ -16,7 +16,7 @@ source:
     folder: dependencies/cutlass
 
 build:
-  number: 2
+  number: 3
   skip: true  # [osx]
   skip: true  # [win]
   skip: true  # [cuda_compiler_version == "None"]
