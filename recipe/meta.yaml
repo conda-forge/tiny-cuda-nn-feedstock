@@ -16,7 +16,7 @@ source:
     folder: dependencies/cutlass
 
 build:
-  number: 4
+  number: 5
   skip: true  # [osx]
   skip: true  # [win]
   skip: true  # [cuda_compiler_version == "None"]
