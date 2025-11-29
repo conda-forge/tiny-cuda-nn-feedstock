@@ -3,5 +3,5 @@ set "CUDA_HOME=%LIBRARY_PREFIX%"
 set "CMAKE_PREFIX_PATH=%LIBRARY_PREFIX%"
 
 cd bindings\torch
-%PYTHON% -m pip install . -vv
+%PYTHON% -m pip install . -vv --no-deps --ignore-installed
 if errorlevel 1 exit 1

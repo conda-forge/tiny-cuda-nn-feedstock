@@ -24,7 +24,7 @@ build:
   # We link directly against the system's libcuda.so, which conda-build cannot provide.
   # Hence, we must whitelist it so conda-build doesn't fail the overlinking check.
   missing_dso_whitelist:
-    - $RPATH/libcuda.so.1
+    - $RPATH/libcuda.so.1  # [linux]
 
 requirements:
   build:
