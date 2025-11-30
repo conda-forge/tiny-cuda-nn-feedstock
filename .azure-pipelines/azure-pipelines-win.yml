@@ -25,6 +25,7 @@ jobs:
     CONDA_BLD_PATH: D:\\bld\\
     MINIFORGE_HOME: D:\Miniforge
     UPLOAD_TEMP: D:\\tmp
+  vmImage: windows-2019
 
   steps:
 
