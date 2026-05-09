@@ -37,16 +37,13 @@ requirements:
     - python
     - pytorch
     - setuptools
-    - cuda-nvcc
-    - cuda-toolkit
   host:
     - pip
     - python
     - pytorch
     - setuptools
     - cuda-version {{ cuda_compiler_version }}
-    - cuda-nvcc
-    - cuda-toolkit
+    - cuda-cudart-dev
   run:
     - cuda-cudart
     - python
