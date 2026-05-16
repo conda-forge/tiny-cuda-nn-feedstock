@@ -10,8 +10,8 @@ package:
   version: ${{ version }}
 
 source:
-  - url: https://github.com/NVlabs/${{ name }}/archive/c91138bcd4c6877c8d5e60e483c0581aafc70cce.tar.gz
-    sha256: 0e0a331ab08a0b63a843ed9517bd746b52bc366c68ed882894d2066ac940dea6
+  - url: https://github.com/NVlabs/${{ name }}/archive/refs/tags/v${{ version }}.tar.gz
+    sha256: fea09c396f841de490944b02285946d77e43f4975ff247f2301113161d119bcd
     patches:
       - patches/0001-Use-packaging-version.patch
   - url: https://github.com/fmtlib/fmt/archive/b0c8263cb26ea178d3a5df1b984e1a61ef578950.tar.gz
@@ -20,6 +20,9 @@ source:
   - url: https://github.com/NVIDIA/cutlass/archive/1eb6355182a5124639ce9d3ff165732a94ed9a70.tar.gz
     sha256: 6ea7f41ed6548b980c96459855088f10efaf3c9ef6cb3668cc094a337cef86a3
     target_directory: dependencies/cutlass
+  - url: https://github.com/vector-of-bool/cmrc/archive/952ffddba731fc110bd50409e8d2b8a06abbd237.tar.gz
+    sha256: 9a1e00d18da46d9765ba5a59f7275dea8b87b242b8885588b3a4694bd4d19747
+    target_directory: dependencies/cmrc
 
 build:
   number: ${{ build_number }}
