@@ -67,9 +67,12 @@ requirements:
         - libcublas-dev
         - libcusolver-dev
         - libcusparse-dev
+        - cuda-nvrtc-dev
   run:
     - if: cuda_compiler_version != "None"
-      then: cuda-cudart
+      then:
+        - cuda-cudart
+        - cuda-nvrtc
     - python
     - "pytorch 2.10.* *cuda*"
   ignore_run_exports:
