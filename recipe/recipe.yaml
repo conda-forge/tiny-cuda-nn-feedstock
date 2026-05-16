@@ -2,8 +2,8 @@ schema_version: 1
 
 context:
   name: tiny-cuda-nn
-  version: "1.7.0.dev0"
-  build_number: 11
+  version: "2.0"
+  build_number: 0
 
 package:
   name: ${{ name|lower }}
@@ -58,15 +58,12 @@ requirements:
     - "pytorch 2.10.* *cuda*"
     - setuptools
     - if: cuda_compiler_version != "None"
-      then: cuda-version ==${{ cuda_compiler_version }}
-    - if: cuda_compiler_version != "None"
-      then: cuda-cudart-dev
-    - if: cuda_compiler_version != "None"
-      then: libcublas-dev
-    - if: cuda_compiler_version != "None"
-      then: libcusolver-dev
-    - if: cuda_compiler_version != "None"
-      then: libcusparse-dev
+      then:
+        - cuda-version ==${{ cuda_compiler_version }}
+        - cuda-cudart-dev
+        - libcublas-dev
+        - libcusolver-dev
+        - libcusparse-dev
   run:
     - if: cuda_compiler_version != "None"
       then: cuda-cudart
