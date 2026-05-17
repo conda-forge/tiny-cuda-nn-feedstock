@@ -27,6 +27,9 @@ source:
 build:
   number: ${{ build_number }}
   skip:
+    # Upstream builds a CUDA extension and imports fail without CUDA available.
+    # Keep no-CUDA, non-Linux, and CUDA 11.8 variants disabled until the
+    # PyTorch/CUDA compiler stack can build and test them here.
     - osx
     - win
     - cuda_compiler_version == "None"
