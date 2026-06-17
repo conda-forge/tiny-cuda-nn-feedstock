@@ -8,4 +8,4 @@ export CMAKE_PREFIX_PATH=$PREFIX
 export MAX_JOBS=${MAX_JOBS:-1}
 
 cd bindings/torch
-$PYTHON -m pip install . -vv
+python -m pip install . -vv
