@@ -21,9 +21,10 @@ source:
       # https://github.com/NVlabs/tiny-cuda-nn/pull/535; remove after packaging
       # a release that contains merge commit 25874967.
       - patches/0003-Use-CXX17-and-conforming-MSVC-preprocessor.patch
-      # PyTorch 2.13's Windows headers require C++20; remove once upstream's
-      # setup.py selects the C++ standard required by its PyTorch dependency.
-      # Failure evidence: https://github.com/conda-forge/tiny-cuda-nn-feedstock/actions/runs/31848016285/job/94918269471
+      # PyTorch 2.13's Windows headers require C++20, while CUDA sources still
+      # need C++17 with NVCC 13; remove once upstream selects both standards.
+      # Evidence: https://github.com/conda-forge/tiny-cuda-nn-feedstock/actions/runs/31848016285/job/94918269471
+      # and https://github.com/conda-forge/tiny-cuda-nn-feedstock/actions/runs/31848967415/job/94920992414
       - patches/0004-Use-CXX20-for-PyTorch-extension.patch
   - url: https://github.com/fmtlib/fmt/archive/b0c8263cb26ea178d3a5df1b984e1a61ef578950.tar.gz
     sha256: 49473ea73d3d97724fb9c69beaa7ef4547c05e53b1d9d40c8994c1e369e49faa
