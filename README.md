@@ -40,31 +40,73 @@ conda config --add channels conda-forge
 conda config --set channel_priority strict
 ```
 
-Once the `conda-forge` channel has been enabled, `tiny-cuda-nn` can be installed with `conda`:
+How to use
+----------
+
+<details>
+<summary>With conda</summary>
 
 ```
 conda install tiny-cuda-nn
 ```
 
-or with `mamba`:
+</details>
+
+<details>
+<summary>With mamba</summary>
 
 ```
 mamba install tiny-cuda-nn
 ```
 
-It is possible to list all of the versions of `tiny-cuda-nn` available on your platform with `conda`:
+</details>
+
+<details>
+<summary>With pixi</summary>
+
+```
+# for adding to your local project
+pixi add tiny-cuda-nn
+# for installing globally
+pixi global install tiny-cuda-nn
+```
+
+</details>
+
+Search package versions
+-----------------------
+
+It is possible to list all of the versions of `tiny-cuda-nn` available on your platform:
+
+<details>
+<summary>With conda</summary>
 
 ```
 conda search tiny-cuda-nn --channel conda-forge
 ```
 
-or with `mamba`:
+</details>
+
+<details>
+<summary>With mamba</summary>
 
 ```
 mamba search tiny-cuda-nn --channel conda-forge
 ```
 
-Alternatively, `mamba repoquery` may provide more information:
+</details>
+
+<details>
+<summary>With pixi</summary>
+
+```
+pixi search tiny-cuda-nn --channel conda-forge
+```
+
+</details>
+
+<details>
+<summary>With mamba repoquery, which may provide more information</summary>
 
 ```
 # Search all versions available on your platform:
@@ -76,6 +118,8 @@ mamba repoquery whoneeds tiny-cuda-nn --channel conda-forge
 # List dependencies of `tiny-cuda-nn`:
 mamba repoquery depends tiny-cuda-nn --channel conda-forge
 ```
+
+</details>
 
 
 About conda-forge

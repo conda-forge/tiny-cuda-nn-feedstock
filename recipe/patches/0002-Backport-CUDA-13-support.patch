@@ -1,0 +1,63 @@
+From 800e401b166d20ddd11f6f8299a0b71df6835e09 Mon Sep 17 00:00:00 2001
+From: Thomas Mueller <tmueller@nvidia.com>
+Date: Wed, 20 Aug 2025 13:11:26 +0200
+Subject: [PATCH] Backport CUDA 13 compute-capability support
+
+Backport the functional changes from
+https://github.com/NVlabs/tiny-cuda-nn/pull/514. Formatting-only changes
+from the upstream commit are intentionally omitted.
+---
+ CMakeLists.txt          | 4 +++-
+ bindings/torch/setup.py | 4 +++-
+ src/common_host.cu      | 4 +++-
+ 3 files changed, 9 insertions(+), 3 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 955b88c..bc66e13 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -165,7 +165,9 @@ else()
+ 	set(LATEST_SUPPORTED_CUDA_ARCHITECTURE 120)
+ endif()
+ 
+-if (CUDA_VERSION VERSION_GREATER_EQUAL 12.0)
++if (CUDA_VERSION VERSION_GREATER_EQUAL 13.0)
++	set(EARLIEST_SUPPORTED_CUDA_ARCHITECTURE 75)
++elseif (CUDA_VERSION VERSION_GREATER_EQUAL 12.0)
+ 	set(EARLIEST_SUPPORTED_CUDA_ARCHITECTURE 50)
+ else()
+ 	set(EARLIEST_SUPPORTED_CUDA_ARCHITECTURE 20)
+diff --git a/bindings/torch/setup.py b/bindings/torch/setup.py
+index 44c7476..594b2f1 100644
+--- a/bindings/torch/setup.py
++++ b/bindings/torch/setup.py
+@@ -14,7 +14,9 @@ SCRIPT_DIR = os.path.dirname(os.path.realpath(__file__))
+ ROOT_DIR = os.path.dirname(os.path.dirname(SCRIPT_DIR))
+ 
+ def min_supported_compute_capability(cuda_version):
+-	if cuda_version >= parse_version("12.0"):
++	if cuda_version >= parse_version("13.0"):
++		return 75
++	elif cuda_version >= parse_version("12.0"):
+ 		return 50
+ 	else:
+ 		return 20
+diff --git a/src/common_host.cu b/src/common_host.cu
+index 364ef37..fd9bfec 100644
+--- a/src/common_host.cu
++++ b/src/common_host.cu
+@@ -261,8 +261,10 @@ uint32_t cuda_max_supported_compute_capability() {
+ 		return 80;
+ 	} else if (cuda_version < 11080) {
+ 		return 86;
+-	} else {
++	} else if (cuda_version < 12080) {
+ 		return 90;
++	} else {
++		return 120;
+ 	}
+ }
+ 
+-- 
+2.51.0
+
