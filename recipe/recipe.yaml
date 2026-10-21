@@ -51,9 +51,9 @@ build:
     - osx
     - cuda_compiler_version == "None"
     - cuda_compiler_version == "11.8"
-    # PyTorch 2.13's Windows CUDA 12 build is pinned to CUDA 12.8, while the
-    # conda-forge compiler matrix currently provides 12.9 and 13.0 here.
-    - win and cuda_compiler_version != "13.0"
+    # PyTorch 2.14's only Windows CUDA build uses CUDA 13.4, while the
+    # conda-forge compiler matrix also provides 12.9 here.
+    - win and cuda_compiler_version != "13.4"
   script:
     file: ${{ "build.bat" if win else "build.sh" }}
   dynamic_linking:
