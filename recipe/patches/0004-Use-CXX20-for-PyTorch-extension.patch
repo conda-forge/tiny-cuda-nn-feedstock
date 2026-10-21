@@ -15,7 +15,7 @@ index 594b2f1..9f372f4 100644
  		print(f"Detected CUDA version {cuda_version}")
  		if cuda_version >= parse_version("11.0"):
 -			cpp_standard = 17
-+			cpp_standard = 20 if os.name == "nt" else 17
++			cpp_standard = 20
 +			cuda_standard = 17
  
  		supported_compute_capabilities = [
